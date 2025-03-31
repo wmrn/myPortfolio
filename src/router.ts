@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '@/components/Home.vue'
 import Profile from '@/components/Profile.vue'
 import Works from '@/components/Works.vue'
@@ -23,8 +23,8 @@ const worksLong = Object.entries(modules).map(([path, module]) => {
 routes.push(...worksLong);
 
 const router = createRouter({
-    history: createWebHistory('/myPortfolio/'),
-    routes
+    history: createWebHashHistory('/myPortfolio/'),
+    routes: routes
 })
 
 export default router
