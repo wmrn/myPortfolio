@@ -23,7 +23,7 @@ const worksLong = Object.entries(modules).map(([path, module]) => {
 routes.push(...worksLong);
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/myPortfolio/'),
     routes
 })
 
