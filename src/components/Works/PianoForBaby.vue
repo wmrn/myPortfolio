@@ -117,7 +117,7 @@ const breadItems = [
 {
       title: '制作物まとめ',
       disabled: false,
-      href: '/myPortfolio/Works',
+      href: '/Works',
     },
     {
       title: storeSelectedImage.selectedImage.title,
