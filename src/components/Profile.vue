@@ -93,9 +93,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import p_me from '@/assets/Profile/me.jpg';
-import img1 from '@/assets/Profile/1.jpg';
-import img2 from '@/assets/Profile/2.jpg';
+import p_me from '/images/Profile/me.jpg';
+import img1 from '/images/Profile/1.jpg';
+import img2 from '/images/Profile/2.jpg';
 
 // data
 const items = ref([

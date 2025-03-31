@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import headerImage from '@/assets/header.jpg';
+import headerImage from '/images/header.jpg';
 
 // data
 const drawer = ref(false);
@@ -50,7 +50,7 @@ const drawer = ref(false);
 
 <style scoped>
 .gradient {
-  background: linear-gradient(to top left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9)380px, rgba(255, 255, 255, 1)), url('@/assets/header.jpg');
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9)380px, rgba(255, 255, 255, 1)), url('/images/header.jpg');
   background-size: cover;
 }
 

@@ -19,29 +19,33 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import logo from '@/assets/header.jpg';
-import jsonData from "@/assets/Works/setting.json";
+import logo from '/images/header.jpg';
 import { useRouter } from 'vue-router';
 import { selectedImageStore } from '@/stores/selectedImage';
 import { ItemDetail } from "@/types/Works";
 
 // data
-const copyData = JSON.parse(JSON.stringify(jsonData.data));//ディープコピー
+let copyData = null;
 const router = useRouter();
 const storeSelectedImage = selectedImageStore();
 const leastItem = ref<ItemDetail[]>([]);
 
 // mounted
-onMounted(() => {
+onMounted(async() => {
+  const setting = await fetch('/images/Works/setting.json');
+  copyData = JSON.parse(JSON.stringify(await setting.json())).data;//ディープコピー
+
   for (const item of copyData) {
     if (item.type == "long") {
-      let path = "/src/assets/Works/" + item.img_list[0].alt + "/";
+      let path = "/images/Works/" + item.img_list[0].alt + "/";
       for (const i of item.img_list) {
         i.src = path + i.src;
       }
       leastItem.value.unshift(item);
     }
   }
+
+  console.log(leastItem.value)
 })
 
 //function

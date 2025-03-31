@@ -18,25 +18,27 @@ import "vue-images-grid/dist/style.css";
 import { useRouter } from 'vue-router';
 import { selectedImageStore } from '@/stores/selectedImage';
 import { Item, ItemDetail } from "@/types/Works";
-import jsonData from "@/assets/Works/setting.json";
 import WorksShort from "@/components/Works/Short.vue";
 
 
 // data
 const router = useRouter();
 const storeSelectedImage = selectedImageStore();
-const copyData = JSON.parse(JSON.stringify(jsonData.data));//ディープコピー
+let copyData = null;
 const images = ref<Item[]>([]);
 const isActive = ref(false);
 const selectedImage = ref<ItemDetail>({});
 
 // mounted
-onMounted(() => {
+onMounted(async() => {
+  const setting = await fetch('/images/Works/setting.json');
+  copyData = JSON.parse(JSON.stringify(await setting.json())).data;//ディープコピー
+
   for (const item of copyData) {
     // 画像パスの修正
-    let path = "/src/assets/Works/Short/"
+    let path = "/images/Works/Short/"
     if (item.type == "long") {
-      path = "/src/assets/Works/" + item.img_list[0].alt + "/";
+      path = "/images/Works/" + item.img_list[0].alt + "/";
     }
 
     for (const i of item.img_list) {
