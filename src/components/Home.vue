@@ -44,8 +44,6 @@ onMounted(async() => {
       leastItem.value.unshift(item);
     }
   }
-
-  console.log(leastItem.value)
 })
 
 //function
