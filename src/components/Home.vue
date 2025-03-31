@@ -37,7 +37,7 @@ onMounted(async() => {
 
   for (const item of copyData) {
     if (item.type == "long") {
-      let path = "/images/Works/" + item.img_list[0].alt + "/";
+      let path = "/myPortfolio/images/Works/" + item.img_list[0].alt + "/";
       for (const i of item.img_list) {
         i.src = path + i.src;
       }

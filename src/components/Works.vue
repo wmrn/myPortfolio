@@ -36,9 +36,9 @@ onMounted(async() => {
 
   for (const item of copyData) {
     // 画像パスの修正
-    let path = "/images/Works/Short/"
+    let path = "/myPortfolio/images/Works/Short/"
     if (item.type == "long") {
-      path = "/images/Works/" + item.img_list[0].alt + "/";
+      path = "/myPortfolio/images/Works/" + item.img_list[0].alt + "/";
     }
 
     for (const i of item.img_list) {
