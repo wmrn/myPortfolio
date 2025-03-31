@@ -31,7 +31,7 @@ const selectedImage = ref<ItemDetail>({});
 
 // mounted
 onMounted(async() => {
-  const setting = await fetch('/images/Works/setting.json');
+  const setting = await fetch('/myPortfolio/images/Works/setting.json');
   copyData = JSON.parse(JSON.stringify(await setting.json())).data;//ディープコピー
 
   for (const item of copyData) {
