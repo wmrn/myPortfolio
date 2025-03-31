@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir dock",
+    "build": "vite build --outDir docs",
     "serve": "vite preview",
     "lint": "eslint --ext .vue,.js,.ts src/"
   },
