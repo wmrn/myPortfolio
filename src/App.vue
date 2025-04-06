@@ -6,7 +6,7 @@
         <v-spacer />
         <v-icon icon="mdi-close" class="mr-4 mt-5" @click.stop="drawer = !drawer" />
       </div>
-      <v-list>
+      <v-list base-color="primary">
         <v-list-item title="ホーム" to="/" class="pl-10" />
         <v-list-item title="自己紹介" class="pl-10" to="/Profile" />
         <v-list-item title="制作物まとめ" class="pl-10" to="/Works" />
@@ -64,4 +64,9 @@ h2 {
   color: rgb(var(--v-theme-primary));
   padding-left: 12px;
 }
+
+html {
+  font-family: 'Noto Sans JP','Robot', sans-serif !important;
+}
+
 </style>

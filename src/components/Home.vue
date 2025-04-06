@@ -1,7 +1,8 @@
 <template>
   <v-app class="w-100">
     <v-card variant="text">
-      <v-img :src="logo" gradient="to top, rgba(255,255,255,0), rgba(255,255,255,1)"></v-img>
+      <v-img :src="logo" class="ripples_effect" />
+      <div  class="overlay-text">和田</div>
     </v-card>
     <v-card variant="text">
       <h2>最近の活動</h2>
@@ -25,6 +26,9 @@ import { useRouter } from 'vue-router';
 import { selectedImageStore } from '@/stores/selectedImage';
 import { ItemDetail } from "@/types/Works";
 
+import $ from 'jquery';
+import 'jquery.ripples';
+
 // data
 let copyData = null;
 const router = useRouter();
@@ -45,6 +49,13 @@ onMounted(async () => {
       leastItem.value.unshift(item);
     }
   }
+
+  // Ripplesエフェクトを適用
+  $('.ripples_effect').ripples({
+    resolution: 512,
+    dropRadius: 20, // 波紋の半径
+    perturbance: 0.04, // 波紋の揺れ具合
+  });
 })
 
 //function
@@ -68,5 +79,22 @@ h3 {
 
 p {
   white-space: normal;
+}
+
+.ripples_effect {
+  position: relative;
+  overflow: hidden; /* 必須 */
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%; /* 縦方向の中央揃え */
+  left: 50%; /* 横方向の中央揃え */
+  transform: translate(-50%, -50%); /* 中央揃えの補正 */
+  color: white; /* 文字色 */
+  font-size: 1.5rem; /* 文字サイズ */
+  font-weight: bold; /* 太字 */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); /* 文字の影 */
+  pointer-events: none; /* クリックを無効化 */
 }
 </style>

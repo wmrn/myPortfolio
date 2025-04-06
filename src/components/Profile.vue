@@ -21,20 +21,26 @@
 
         <h2>経歴</h2>
         <v-timeline align="start" side="end">
-            <v-timeline-item dot-color="primary">
+            <v-timeline-item dot-color="primary" min-width="100%">
                 <template v-slot:opposite>2021/03</template>
                 <v-card variant="text">
                     <v-card-title class="font-weight-black">明治大学大学院 先端数理科学研究科<br>
                         先端メディアサイエンス専攻 修士課程 修了</v-card-title>
                     <v-card-item>
-                        <li>研究分野：VR、CGキャラクター、リアクション</li>
-                        <li>関連記事：
-                            <a href="https://fukuchilab.org/projects-j/speech-karaoke-j" target="_blank"
-                                rel="noopener noreferrer">スピーチやプレゼンテーションを話者になりきって<br>追体験できるVR教材の開発</a>
-                        </li>
-                        <v-carousel hide-delimiters show-arrows="hover" cycle class="my-4 h-auto">
-                            <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" contain />
-                        </v-carousel>
+                        <v-row>
+                            <v-col xs="12" sm="12" md="7">
+                                <li>研究分野：VR、CGキャラクター、リアクション</li>
+                                <li>関連記事：
+                                    <a href="https://fukuchilab.org/projects-j/speech-karaoke-j" target="_blank"
+                                        rel="noopener noreferrer">スピーチやプレゼンテーションを話者になりきって<br>追体験できるVR教材の開発</a>
+                                </li>
+                            </v-col>
+                            <v-col xs="12" sm="12" md="5">
+                                <v-carousel hide-delimiters show-arrows="hover" cycle class="h-auto">
+                                    <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" contain />
+                                </v-carousel>
+                            </v-col>
+                        </v-row>
 
                     </v-card-item>
                 </v-card>
@@ -121,4 +127,11 @@ h2 {
 .li_r {
     list-style: none;
 }
+
+.v-timeline--vertical.v-timeline--justify-auto {
+    padding-left: 12px;
+    grid-template-columns: 10% 10% auto;
+}
+
+
 </style>
