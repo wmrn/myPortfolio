@@ -5,11 +5,11 @@
             <v-card variant="text">
                 <v-card-item>
                     <v-row>
-                        <v-col cols="8">
+                        <v-col xs="12" sm="12" md="8">
                             <h3>和田毬那（Wada Marina）</h3>
                             <p>アニメ、水が関連するもの、洋菓子が好きです。</p>
                         </v-col>
-                        <v-col cols="4">
+                        <v-col xs="12" sm="12" md="4">
                             <v-img :src="p_me" width="100%" max-width="350px" />
                         </v-col>
                     </v-row>

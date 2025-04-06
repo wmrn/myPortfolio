@@ -6,10 +6,10 @@
         <div>
             <h2>概要説明</h2>
             <v-row>
-                <v-col cols="7">
+                <v-col xs="12" sm="12" md="7">
                     <h3>{{ storeSelectedImage.selectedImage.des }}</h3>
                 </v-col>
-                <v-col cols="5">
+                <v-col xs="12" sm="12" md="5">
                     <iframe :src="'https://www.youtube.com/embed/' + storeSelectedImage.selectedImage.youtube"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -18,7 +18,7 @@
             </v-row>
             <h2 class="mt-10">制作メモ</h2>
             <v-row>
-                <v-col cols="7">
+                <v-col xs="12" sm="12" md="7">
                     <li>環境：</li>
                     <li>使用ソフト：{{ storeSelectedImage.selectedImage.tech }}</li>
                     <li>ソースコード：
@@ -28,7 +28,7 @@
                     </li>
                     <li>制作期間：</li>
                 </v-col>
-                <v-col cols="5">
+                <v-col xs="12" sm="12" md="5">
                     <v-img :src="storeSelectedImage.selectedImage.img_list[1].src" @click="imageClick(1)" />
                 </v-col>
             </v-row>
@@ -40,10 +40,10 @@
             </v-row>
             <hr>
             <v-row>
-                <v-col cols="8">
+                <v-col xs="12" sm="12" md="8">
                     <h3>学習ポイント</h3>
                 </v-col>
-                <v-col cols="4">
+                <v-col xs="12" sm="12" md="4">
                     <v-img :src="storeSelectedImage.selectedImage.img_list[2].src" @click="imageClick(2)" />
                 </v-col>
             </v-row>

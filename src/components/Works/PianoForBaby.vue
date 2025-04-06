@@ -6,7 +6,7 @@
         <div>
             <h2>概要説明</h2>
             <v-row>
-                <v-col cols="7">
+                <v-col xs="12" sm="12" md="7">
                     <h3>{{ storeSelectedImage.selectedImage.des }}</h3>
                     <li class="li_none">⭐️ いつも持ち歩いているスマホで遊べる！</li>
                     <li class="li_none">⭐️ 楽譜が読めなくても文字を追うだけで曲が弾ける！</li>
@@ -21,7 +21,7 @@
                         <li class="ml-5">「ドレミ」または「CLAP」の文字が、鍵盤または右端部分に表示されます<br>順にタップしていくと、選んだ曲を弾くことができます</li>
                     </ol>
                 </v-col>
-                <v-col cols="5">
+                <v-col xs="12" sm="12" md="5">
                     <iframe :src="'https://www.youtube.com/embed/' + storeSelectedImage.selectedImage.youtube"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -30,7 +30,7 @@
             </v-row>
             <h2 class="mt-10">制作メモ</h2>
             <v-row>
-                <v-col cols="7">
+                <v-col xs="12" sm="12" md="7">
                     <p>
                         まだ幼い姪っ子がピアノの絵本で楽しそうに遊んでいたものの、
                         <br>
@@ -48,7 +48,7 @@
                     </li>
                     <li>制作期間：1ヶ月</li>
                 </v-col>
-                <v-col cols="5">
+                <v-col xs="12" sm="12" md="5">
                     <v-img :src="storeSelectedImage.selectedImage.img_list[1].src" @click="imageClick(1)" />
                 </v-col>
             </v-row>
@@ -63,7 +63,7 @@
             </v-row>
             <hr>
             <v-row>
-                <v-col cols="8">
+                <v-col xs="12" sm="12" md="8">
                     <h3>学習ポイント</h3>
                     <p class="font-weight-bold">【 設定ファイル(JSONの)設計 】</p>
                     <p>業務で設定ファイルの設計にてこづったため、コツを掴むために練習・整理した</p>
@@ -80,7 +80,7 @@
                     <br>
 
                 </v-col>
-                <v-col cols="4">
+                <v-col xs="12" sm="12" md="4">
                     <v-img :src="storeSelectedImage.selectedImage.img_list[2].src" @click="imageClick(2)" />
                 </v-col>
             </v-row>
