@@ -1,18 +1,18 @@
 <template>
   <div class="pt-5 w-100">
+    <h1 class="text-center">-- 制作物まとめ --</h1>
     <ImagesGrid :cols="4" :images="images" :image-style="{ width: '300px', marginBottom: '10px' }" :is-responsive="true"
       col-spaces="20px" object-fit="cover" @onImageClick="onImageClick" />
   </div>
 
   <!-- 詳細 -->
   <v-dialog v-model="isActive" max-width="600px">
-    <WorksShort v-model:selectedImage="selectedImage"
-      v-model:isActive="isActive" />
+    <WorksShort v-model:selectedImage="selectedImage" v-model:isActive="isActive" />
   </v-dialog>
 
 </template>
 <script setup lang="ts">
-import { ref, onMounted} from "vue";
+import { ref, onMounted } from "vue";
 import ImagesGrid from "vue-images-grid";
 import "vue-images-grid/dist/style.css";
 import { useRouter } from 'vue-router';
@@ -30,7 +30,7 @@ const isActive = ref(false);
 const selectedImage = ref<ItemDetail>({});
 
 // mounted
-onMounted(async() => {
+onMounted(async () => {
   const setting = await fetch('/myPortfolio/images/Works/setting.json');
   copyData = JSON.parse(JSON.stringify(await setting.json())).data;//ディープコピー
 
@@ -54,11 +54,17 @@ const onImageClick = (image: Item) => {
   selectedImage.value = copyData[copyData.length - 1 * (index + 1)];
   if (selectedImage.value.type == "short") {
     isActive.value = true;
-  }else{
+  } else {
     storeSelectedImage.setSelectedImage(selectedImage.value);
-    router.push('/Works/'+selectedImage.value.img_list[0].alt);
+    router.push('/Works/' + selectedImage.value.img_list[0].alt);
   }
 };
 
 </script>
-<style scoped></style>
+<style scoped>
+h1,
+h2 {
+    background-color: aliceblue;
+    margin: 0px 0 12px 0;
+}
+</style>

@@ -114,15 +114,15 @@ import { selectedImageStore } from '@/stores/selectedImage';
 //data
 const storeSelectedImage = selectedImageStore();
 const breadItems = [
-{
-      title: '制作物まとめ',
-      disabled: false,
-      href: '/myPortfolio/#/Works',
+    {
+        title: '制作物まとめ',
+        disabled: false,
+        href: '/myPortfolio/#/Works',
     },
     {
-      title: storeSelectedImage.selectedImage.title,
-      disabled: true,
-      href: '/myPortfolio/#/Works/'+storeSelectedImage.selectedImage.img_list[0].alt
+        title: storeSelectedImage.selectedImage.title,
+        disabled: true,
+        href: '/myPortfolio/#/Works/' + storeSelectedImage.selectedImage.img_list[0].alt
     },
 ];
 const imgDialogActive = ref(false);

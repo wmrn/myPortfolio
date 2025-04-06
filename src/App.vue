@@ -15,12 +15,8 @@
     </v-navigation-drawer>
 
     <!-- ヘッダー -->
-    <v-app-bar color="light-blue-darken-3" :image="headerImage" :elevation="2" scroll-behavior="hide">
-      <template v-slot:prepend>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      </template>
-      <v-app-bar-title>初めまして、和田毬那です</v-app-bar-title>
-    </v-app-bar>
+    <v-fab color="primary" icon="mdi-menu" location="top left" position="fixed" absolute class="ma-1"
+      @click.stop="drawer = !drawer"></v-fab>
 
     <v-main>
       <v-card class="d-flex justify-center align-center px-4 scrollable-content">
@@ -66,5 +62,6 @@ const drawer = ref(false);
 h1,
 h2 {
   color: rgb(var(--v-theme-primary));
+  padding-left: 12px;
 }
 </style>
