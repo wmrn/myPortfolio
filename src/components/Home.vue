@@ -1,8 +1,8 @@
 <template>
   <v-app class="w-100">
-    <v-card variant="text" h-50 max-height="250px">
-      <v-img h-100 :src="header" class="ripples_effect" />
-      <div class="overlay-text">初めまして、和田毬那です</div>
+    <v-card variant="text" h-50 max-height="250px" class="image-container">
+      <v-img h-100 :src="top_image" class="ripples_effect" />
+      <v-img h-100 :src="top_text" class="top_text" />
     </v-card>
     <v-card variant="text">
       <h2>最近の活動</h2>
@@ -20,8 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted,onUnmounted,onActivated,onDeactivated } from 'vue';
-import header from '/images/header.jpg';
+import { ref, onMounted, onUnmounted, onActivated, onDeactivated } from 'vue';
+import top_image from '/images/top_image.jpg';
+import top_text from '/images/top_text.png';
 import { useRouter, onBeforeRouteUpdate } from 'vue-router';
 import { selectedImageStore } from '@/stores/selectedImage';
 import { ItemDetail } from "@/types/Works";
@@ -74,7 +75,7 @@ const clickedCard = ((name: string) => {
 // 波紋エフェクトの初期設定
 const setRipples = (() => {
   $('.ripples_effect').ripples({
-    imageUrl: header, // 背景画像のURL
+    imageUrl: top_image, // 背景画像のURL
     resolution: 450,// 重さ、値が大きいほど遅い
     interactive: false, // クリックで波紋を発生させるかどうか
   });
@@ -93,7 +94,7 @@ const setRipples = (() => {
     const perturbance = 0.05; // 波紋の強度、小さいと出だしが目立たないが広がらない
     let x = 0;
     let y = 0;
-    if (Math.random()*100 % 2 == 0) {
+    if (Math.random() * 100 % 2 == 0) {
       x = Math.random() >= 0.5 ? -1 * dropRadius / 2 : width + dropRadius / 2; // 画面外から入るようにする
       y = Math.random() * height;
     } else {
@@ -120,32 +121,39 @@ p {
   white-space: normal;
 }
 
+.image-container {
+  position: relative;
+  /* 子要素を重ねるために親要素を相対位置に設定 */
+  width: 100%;
+  height: auto;
+}
+
 .ripples_effect {
   width: 100%;
   height: auto;
-  object-fit: contain; /* アスペクト比を保ちながら表示 */
-  aspect-ratio: 16 / 9; /* 必要に応じてアスペクト比を設定 */
+  object-fit: contain;
+  /* アスペクト比を保ちながら表示 */
+  aspect-ratio: 16 / 9;
+  /* 必要に応じてアスペクト比を設定 */
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
+  z-index: 1;
+  /* 背景として配置 */
 }
 
-.overlay-text {
+.top_text {
   position: absolute;
+  /* 前景画像を絶対位置に設定 */
   top: 50%;
   /* 縦方向の中央揃え */
   left: 50%;
   /* 横方向の中央揃え */
   transform: translate(-50%, -50%);
   /* 中央揃えの補正 */
-  color: white;
-  /* 文字色 */
-  font-size: 1.5rem;
-  /* 文字サイズ */
-  font-weight: bold;
-  /* 太字 */
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-  /* 文字の影 */
-  pointer-events: none;
-  /* クリックを無効化 */
+  width: 100%;
+  /* 必要に応じてサイズを調整 */
+  height: auto;
+  z-index: 2;
+  /* 背景より前面に配置 */
 }
 </style>
