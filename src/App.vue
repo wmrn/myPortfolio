@@ -38,7 +38,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import headerImage from '/images/header.jpg';
 
 // data
 const drawer = ref(false);
@@ -46,7 +45,7 @@ const drawer = ref(false);
 
 <style scoped>
 .gradient {
-  background: linear-gradient(to top left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 380px, rgba(255, 255, 255, 1)), url('/images/header.jpg');
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 380px, rgba(255, 255, 255, 1)), url('/images/jerry_fish.jpg');
   background-size: cover;
 }
 
@@ -59,14 +58,13 @@ const drawer = ref(false);
 </style>
 
 <style>
+html {
+  font-family: 'Noto Sans JP', 'Robot', sans-serif !important;
+}
+
 h1,
 h2 {
   color: rgb(var(--v-theme-primary));
   padding-left: 12px;
 }
-
-html {
-  font-family: 'Noto Sans JP','Robot', sans-serif !important;
-}
-
 </style>

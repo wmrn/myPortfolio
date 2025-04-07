@@ -1,8 +1,8 @@
 <template>
   <v-app class="w-100">
-    <v-card variant="text">
-      <v-img :src="logo" class="ripples_effect" />
-      <div  class="overlay-text">和田</div>
+    <v-card variant="text" h-50 max-height="250px">
+      <v-img h-100 :src="header" class="ripples_effect" />
+      <div class="overlay-text">初めまして、和田毬那です</div>
     </v-card>
     <v-card variant="text">
       <h2>最近の活動</h2>
@@ -20,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import logo from '/images/header.jpg';
-import { useRouter } from 'vue-router';
+import { ref, onMounted,onUnmounted,onActivated,onDeactivated } from 'vue';
+import header from '/images/header.jpg';
+import { useRouter, onBeforeRouteUpdate } from 'vue-router';
 import { selectedImageStore } from '@/stores/selectedImage';
 import { ItemDetail } from "@/types/Works";
 
@@ -34,6 +34,7 @@ let copyData = null;
 const router = useRouter();
 const storeSelectedImage = selectedImageStore();
 const leastItem = ref<ItemDetail[]>([]);
+let intervalId: number;
 
 // mounted
 onMounted(async () => {
@@ -50,13 +51,18 @@ onMounted(async () => {
     }
   }
 
-  // Ripplesエフェクトを適用
-  $('.ripples_effect').ripples({
-    resolution: 512,
-    dropRadius: 20, // 波紋の半径
-    perturbance: 0.04, // 波紋の揺れ具合
-  });
-})
+  // 波紋エフェクトの初期設定
+  setRipples();
+});
+
+// unmounted
+onUnmounted(() => {
+  // 波紋エフェクトの停止
+  clearInterval(intervalId);
+  $('.ripples_effect').ripples('stop');
+});
+
+
 
 //function
 const clickedCard = ((name: string) => {
@@ -65,6 +71,39 @@ const clickedCard = ((name: string) => {
   router.push('/Works/' + copyData[index].img_list[0].alt);
 })
 
+// 波紋エフェクトの初期設定
+const setRipples = (() => {
+  $('.ripples_effect').ripples({
+    imageUrl: header, // 背景画像のURL
+    resolution: 450,// 重さ、値が大きいほど遅い
+    interactive: false, // クリックで波紋を発生させるかどうか
+  });
+
+  $('.ripples_effect').ripples('show');
+  $('.ripples_effect').ripples('play');
+
+  // 自動的に波紋を発生させる
+  intervalId = setInterval(() => {
+    const $rippleContainer = $('.ripples_effect');
+    const width = $rippleContainer.outerWidth() || 0;
+    const height = $rippleContainer.outerHeight() || 0;
+
+    // ランダムな位置に波紋を発生させる
+    const dropRadius = 50; // 波紋の半径、小さいと雨、大きいと波
+    const perturbance = 0.05; // 波紋の強度、小さいと出だしが目立たないが広がらない
+    let x = 0;
+    let y = 0;
+    if (Math.random()*100 % 2 == 0) {
+      x = Math.random() >= 0.5 ? -1 * dropRadius / 2 : width + dropRadius / 2; // 画面外から入るようにする
+      y = Math.random() * height;
+    } else {
+      x = Math.random() * width;
+      y = Math.random() >= 0.5 ? -1 * dropRadius / 2 : height + dropRadius / 2; // 画面外から入るようにする
+    }
+
+    $rippleContainer.ripples('drop', x, y, dropRadius, perturbance);
+  }, 1000); // 1秒ごとに波紋を発生
+})
 </script>
 <style scoped>
 h1,
@@ -82,19 +121,31 @@ p {
 }
 
 .ripples_effect {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* アスペクト比を保ちながら表示 */
+  aspect-ratio: 16 / 9; /* 必要に応じてアスペクト比を設定 */
   position: relative;
-  overflow: hidden; /* 必須 */
+  overflow: hidden; 
 }
 
 .overlay-text {
   position: absolute;
-  top: 50%; /* 縦方向の中央揃え */
-  left: 50%; /* 横方向の中央揃え */
-  transform: translate(-50%, -50%); /* 中央揃えの補正 */
-  color: white; /* 文字色 */
-  font-size: 1.5rem; /* 文字サイズ */
-  font-weight: bold; /* 太字 */
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); /* 文字の影 */
-  pointer-events: none; /* クリックを無効化 */
+  top: 50%;
+  /* 縦方向の中央揃え */
+  left: 50%;
+  /* 横方向の中央揃え */
+  transform: translate(-50%, -50%);
+  /* 中央揃えの補正 */
+  color: white;
+  /* 文字色 */
+  font-size: 1.5rem;
+  /* 文字サイズ */
+  font-weight: bold;
+  /* 太字 */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  /* 文字の影 */
+  pointer-events: none;
+  /* クリックを無効化 */
 }
 </style>
