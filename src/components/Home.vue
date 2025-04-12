@@ -135,6 +135,7 @@ p {
   /* アスペクト比を保ちながら表示 */
   aspect-ratio: 16 / 9;
   /* 必要に応じてアスペクト比を設定 */
+  background-size: cover;
   position: relative;
   overflow: hidden;
   z-index: 1;
