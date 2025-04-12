@@ -32,7 +32,7 @@
                                 <li>研究分野：VR、CGキャラクター、リアクション</li>
                                 <li>関連記事：
                                     <a href="https://fukuchilab.org/projects-j/speech-karaoke-j" target="_blank"
-                                        rel="noopener noreferrer">スピーチやプレゼンテーションを話者になりきって<br>追体験できるVR教材の開発</a>
+                                        rel="noopener noreferrer">スピーチやプレゼンテーションを話者になりきって追体験できるVR教材の開発</a>
                                 </li>
                             </v-col>
                             <v-col xs="12" sm="12" md="5">
@@ -115,6 +115,15 @@ h1,
 h2 {
     background-color: aliceblue;
     margin: 20px 0 5px 0;
+}
+
+a{
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
 }
 
 .li_2 {
